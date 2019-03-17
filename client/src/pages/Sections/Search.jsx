@@ -5,13 +5,35 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Book from "components/Book/Book.jsx";
+import Input from "@material-ui/core/Input";
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
+import API from "../../utils/API";
 
 class Search extends React.Component {
+  state = {
+    bookList: [],
+    bookSearch: ""
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(this.state.bookSearch);
+    API.getBooks(this.state.bookSearch)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ bookList: res.data });
+      })
+      .catch(err => console.log(err));
+  };
   render() {
     const { classes } = this.props;
     return (
@@ -21,14 +43,16 @@ class Search extends React.Component {
             <h2 className={classes.title}>Search for a book by name</h2>
           </GridItem>
           <GridItem xs={12} sm={12} md={6}>
-            <CustomInput
-              labelText="Book title"
-              id="title"
-              formControlProps={{
-                fullWidth: true
-              }}
+            <Input
+              placeholder="Book title"
+              name="bookSearch"
+              onChange={this.handleInputChange}
+              value={this.state.bookSearch}
+              className="input"
             />
-            <Button color="primary">Search</Button>
+            <Button color="primary" onClick={this.handleSubmit}>
+              Search
+            </Button>
           </GridItem>
           <div className={classes.section}>
             <h2 className={classes.title}>Here is what we found</h2>

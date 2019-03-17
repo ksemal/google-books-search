@@ -1,16 +1,9 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
+
 import withStyles from "@material-ui/core/styles/withStyles";
 
-// @material-ui/icons
-
-// core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import Book from "components/Book/Book.jsx";
-
-//import Card from "components/Card/Card.jsx";
 
 import teamStyle from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.jsx";
 

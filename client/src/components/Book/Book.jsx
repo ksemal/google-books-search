@@ -17,8 +17,6 @@ function Book(props) {
     classes.imgRoundedCircle,
     classes.imgFluid
   );
-  console.log("dfdf");
-  console.log(props.page);
   return (
     <GridItem xs={12} sm={12} md={12}>
       <GridItem xs={2} sm={2} md={2} className="float">
