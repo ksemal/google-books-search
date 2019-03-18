@@ -26,10 +26,8 @@ class Search extends React.Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.bookSearch);
     API.getBooks(this.state.bookSearch)
       .then(res => {
-        console.log(res.data);
         this.setState({ bookList: res.data });
       })
       .catch(err => console.log(err));

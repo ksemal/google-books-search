@@ -3,7 +3,13 @@ const db = require("../models");
 const axios = require("axios");
 // Defining methods for the booksController
 module.exports = {
-  findBooks: function(req, res) {}
+  saveBooks: function(req, res) {
+    console.log(req.body);
+    res.json({});
+    // db.Book.create(req.body)
+    //   .then(dbModel => res.json(dbModel))
+    //   .catch(err => console.log(err)); //res.status(422).json(err)
+  }
   // findById: function(req, res) {
   //   db.Book.findById(req.params.id)
   //     .then(dbModel => res.json(dbModel))

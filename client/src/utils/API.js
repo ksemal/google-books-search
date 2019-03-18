@@ -7,5 +7,8 @@ export default {
     return axios.get("/api/booklist", {
       params: { q: query }
     });
+  },
+  saveBook: function(data) {
+    return axios.post("/api/books", data);
   }
 };
