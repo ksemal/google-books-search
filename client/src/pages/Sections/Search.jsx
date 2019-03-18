@@ -53,12 +53,28 @@ class Search extends React.Component {
             <Button color="primary" onClick={this.handleSubmit}>
               Search
             </Button>
+            {this.state.bookList.length ? (
+              <h2 className={classes.title}>Here is what we found</h2>
+            ) : (
+              ""
+            )}
           </GridItem>
           <div className={classes.section}>
-            <h2 className={classes.title}>Here is what we found</h2>
             <div>
               <GridContainer>
-                <Book page="save" />
+                {this.state.bookList.map(item => {
+                  return (
+                    <Book
+                      page="save"
+                      key={item.accessInfo.id}
+                      title={item.volumeInfo.title}
+                      link={item.accessInfo.webReaderLink}
+                      description={item.volumeInfo.description}
+                      authors={item.volumeInfo.authors}
+                      image={item.volumeInfo.imageLinks.thumbnail}
+                    />
+                  );
+                })}
               </GridContainer>
             </div>
           </div>
