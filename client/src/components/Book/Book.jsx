@@ -4,6 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import GridItem from "components/Grid/GridItem.jsx";
 import teamStyle from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.jsx";
 import API from "../../utils/API";
+import { throws } from "assert";
 
 class Book extends React.Component {
   constructor(props) {
@@ -27,10 +28,14 @@ class Book extends React.Component {
       .then()
       .catch(err => console.log(err));
   };
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.props.onChange())
+      .catch(err => console.log(err));
+  };
   render() {
     const { classes } = this.props;
     const imageClasses = classNames(classes.imgRaised, classes.imgFluid);
-    console.log(this.props.dbsaved);
     return (
       <GridItem xs={12} sm={12} md={12} className="divider">
         <GridItem xs={2} sm={2} md={2} className="float">
@@ -56,13 +61,16 @@ class Book extends React.Component {
             Link to preview
           </a>
           {this.props.page === "delete" ? (
-            <button className="delete" onClick={() => this.deleteBook()}>
+            <button
+              className="delete"
+              onClick={() => this.deleteBook(this.props.id)}
+            >
               Delete
             </button>
           ) : this.state.saved || this.props.dbsaved ? (
             <span className="saved">Saved</span>
           ) : (
-            <button className="save" onClick={this.saveBook.bind(this)}>
+            <button className="save" onClick={this.saveBook}>
               Save
             </button>
           )}

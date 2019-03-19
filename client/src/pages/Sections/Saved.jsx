@@ -18,17 +18,10 @@ class Saved extends React.Component {
   loadBooks = () => {
     API.getSaved()
       .then(res => {
-        console.log(res.data);
         this.setState({ savedBooks: res.data });
       })
       .catch(err => console.log(err));
   };
-
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
   render() {
     const { classes } = this.props;
 
@@ -42,10 +35,13 @@ class Saved extends React.Component {
                 <Book
                   page="delete"
                   key={item._id}
+                  id={item._id}
                   link={item.link}
                   description={item.description}
                   authors={item.authors}
                   image={item.image}
+                  title={item.title}
+                  onChange={this.loadBooks}
                 />
               );
             })}
