@@ -64,12 +64,29 @@ class Search extends React.Component {
                   return (
                     <Book
                       page="save"
-                      key={item.accessInfo.id}
-                      title={item.volumeInfo.title}
-                      link={item.accessInfo.webReaderLink}
-                      description={item.volumeInfo.description}
-                      authors={item.volumeInfo.authors}
-                      image={item.volumeInfo.imageLinks.thumbnail}
+                      key={item.id}
+                      google_id={item.id}
+                      title={
+                        !item.volumeInfo.title ? "" : item.volumeInfo.title
+                      }
+                      link={
+                        !item.accessInfo.webReaderLink
+                          ? ""
+                          : item.accessInfo.webReaderLink
+                      }
+                      description={
+                        !item.volumeInfo.description
+                          ? ""
+                          : item.volumeInfo.description
+                      }
+                      authors={
+                        !item.volumeInfo.authors ? "" : item.volumeInfo.authors
+                      }
+                      image={
+                        !item.volumeInfo.imageLinks
+                          ? "../../assets/img/empty.png"
+                          : item.volumeInfo.imageLinks.thumbnail
+                      }
                     />
                   );
                 })}

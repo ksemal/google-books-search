@@ -9,26 +9,27 @@ class Book extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      /* initial state */
+      saved: false
     };
   }
 
   saveBook = event => {
     event.preventDefault();
+    this.setState({ saved: true });
     API.saveBook({
       title: this.props.title,
       authors: this.props.authors,
       description: this.props.description,
       link: this.props.link,
-      image: this.props.image
+      image: this.props.image,
+      google_id: this.props.google_id
     })
-      .then(res => console.log(res))
+      .then()
       .catch(err => console.log(err));
   };
   render() {
     const { classes } = this.props;
     const imageClasses = classNames(classes.imgRaised, classes.imgFluid);
-
     return (
       <GridItem xs={12} sm={12} md={12} className="divider">
         <GridItem xs={2} sm={2} md={2} className="float">
@@ -43,7 +44,10 @@ class Book extends React.Component {
             Title: {this.props.title}
             <br />
             <small className={classes.smallTitle}>
-              Authors: {this.props.authors.map(author => author)}
+              Authors:{" "}
+              {Array.isArray(this.props.authors)
+                ? this.props.authors.map(author => author)
+                : this.props.authors}
             </small>
           </h4>
           <p className={classes.description}>{this.props.description}</p>
@@ -54,6 +58,8 @@ class Book extends React.Component {
             <button className="delete" onClick={() => this.deleteBook()}>
               Delete
             </button>
+          ) : this.state.saved ? (
+            <span className="saved">Saved</span>
           ) : (
             <button className="save" onClick={this.saveBook.bind(this)}>
               Save

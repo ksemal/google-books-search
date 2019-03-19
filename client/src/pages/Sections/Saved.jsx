@@ -6,8 +6,29 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import Book from "components/Book/Book.jsx";
 
 import teamStyle from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.jsx";
+import API from "../../utils/API";
 
 class Saved extends React.Component {
+  state = {
+    savedBooks: []
+  };
+  componentDidMount() {
+    this.loadBooks();
+  }
+  loadBooks = () => {
+    API.getSaved()
+      .then(res => {
+        console.log(res.data);
+        this.setState({ savedBooks: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  // deleteBook = id => {
+  //   API.deleteBook(id)
+  //     .then(res => this.loadBooks())
+  //     .catch(err => console.log(err));
+  // };
   render() {
     const { classes } = this.props;
 
@@ -16,7 +37,18 @@ class Saved extends React.Component {
         <h2 className={classes.title}>Here are your saved books</h2>
         <div>
           <GridContainer>
-            <Book page="delete" />
+            {this.state.savedBooks.map(item => {
+              return (
+                <Book
+                  page="delete"
+                  key={item._id}
+                  link={item.link}
+                  description={item.description}
+                  authors={item.authors}
+                  image={item.image}
+                />
+              );
+            })}
           </GridContainer>
         </div>
       </div>

@@ -65,3 +65,7 @@ button {
 .input {
   margin-right: 20px;
 }
+.saved {
+  margin-left: 10px;
+  color: grey;
+}
