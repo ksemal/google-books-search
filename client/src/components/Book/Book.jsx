@@ -30,6 +30,7 @@ class Book extends React.Component {
   render() {
     const { classes } = this.props;
     const imageClasses = classNames(classes.imgRaised, classes.imgFluid);
+    console.log(this.props.dbsaved);
     return (
       <GridItem xs={12} sm={12} md={12} className="divider">
         <GridItem xs={2} sm={2} md={2} className="float">
@@ -58,7 +59,7 @@ class Book extends React.Component {
             <button className="delete" onClick={() => this.deleteBook()}>
               Delete
             </button>
-          ) : this.state.saved ? (
+          ) : this.state.saved || this.props.dbsaved ? (
             <span className="saved">Saved</span>
           ) : (
             <button className="save" onClick={this.saveBook.bind(this)}>

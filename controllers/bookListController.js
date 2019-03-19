@@ -9,7 +9,20 @@ module.exports = {
         params: { q: req.query, maxResults: 10 }
       })
       .then(booklist => {
-        res.json(booklist.data.items);
+        let id_arr = booklist.data.items.map(item => item.id);
+        db.Book.find({ google_id: { $in: id_arr } })
+          .then(dbArr => {
+            let dbMap = dbArr.map(function(doc) {
+              return doc.google_id;
+            });
+            booklist.data.items.map(item => {
+              dbMap.includes(item.id)
+                ? (item.dbsaved = true)
+                : (item.dbsaved = false);
+            });
+            res.json(booklist.data.items);
+          })
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err)); //.catch(err => res.status(422).json(err)); for production
   }

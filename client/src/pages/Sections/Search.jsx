@@ -87,6 +87,7 @@ class Search extends React.Component {
                           ? "../../assets/img/empty.png"
                           : item.volumeInfo.imageLinks.thumbnail
                       }
+                      dbsaved={item.dbsaved}
                     />
                   );
                 })}
