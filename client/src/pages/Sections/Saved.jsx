@@ -2,10 +2,10 @@ import React from "react";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 
-import GridContainer from "components/Grid/GridContainer.jsx";
-import Book from "components/Book/Book.jsx";
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import Book from "../../components/Book/Book.jsx";
 
-import teamStyle from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.jsx";
+import teamStyle from "../../assets/jss/material-kit-react/views/landingPageSections/teamStyle.jsx";
 import API from "../../utils/API";
 
 class Saved extends React.Component {

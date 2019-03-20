@@ -1,8 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import GridItem from "components/Grid/GridItem.jsx";
-import teamStyle from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.jsx";
+import GridItem from "../Grid/GridItem.jsx";
+import teamStyle from "../../assets/jss/material-kit-react/views/landingPageSections/teamStyle.jsx";
 import API from "../../utils/API";
 import { throws } from "assert";
 

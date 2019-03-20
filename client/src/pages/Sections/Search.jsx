@@ -3,12 +3,12 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import Book from "components/Book/Book.jsx";
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
+import Button from "../../components/CustomButtons/Button.jsx";
+import Book from "../../components/Book/Book.jsx";
 import Input from "@material-ui/core/Input";
-import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
+import productStyle from "../../assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 import API from "../../utils/API";
 
 class Search extends React.Component {
