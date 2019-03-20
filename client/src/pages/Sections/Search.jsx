@@ -8,7 +8,6 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Book from "components/Book/Book.jsx";
 import Input from "@material-ui/core/Input";
-
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 import API from "../../utils/API";
 
@@ -84,7 +83,7 @@ class Search extends React.Component {
                       }
                       image={
                         !item.volumeInfo.imageLinks
-                          ? "../../assets/img/empty.png"
+                          ? require("../../assets/img/empty.png")
                           : item.volumeInfo.imageLinks.thumbnail
                       }
                       dbsaved={item.dbsaved}
