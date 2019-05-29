@@ -56,24 +56,26 @@ class Book extends React.Component {
                 : this.props.authors}
             </small>
           </h4>
-          <p className={classes.description}>{this.props.description}</p>
-          <a href={this.props.link} target="_blank">
-            Link to preview
-          </a>
-          {this.props.page === "delete" ? (
-            <button
-              className="delete"
-              onClick={() => this.deleteBook(this.props.id)}
-            >
-              Delete
-            </button>
-          ) : this.state.saved || this.props.dbsaved ? (
-            <span className="saved">Saved</span>
-          ) : (
-            <button className="save" onClick={this.saveBook}>
-              Save
-            </button>
-          )}
+          <div className="wrapper-book">
+            <p className={classes.description}>{this.props.description}</p>
+            <a href={this.props.link} target="_blank">
+              Link to preview
+            </a>
+            {this.props.page === "delete" ? (
+              <button
+                className="delete"
+                onClick={() => this.deleteBook(this.props.id)}
+              >
+                Delete
+              </button>
+            ) : this.state.saved || this.props.dbsaved ? (
+              <span className="saved">Saved</span>
+            ) : (
+              <button className="save" onClick={this.saveBook}>
+                Save
+              </button>
+            )}
+          </div>
         </GridItem>
       </GridItem>
     );

@@ -36,3 +36,10 @@ button {
   margin-left: 10px;
   color: grey;
 }
+.wrapper-book {
+  display: table;
+  height: 100% !important;
+}
+.divider {
+  height: 100%;
+}
